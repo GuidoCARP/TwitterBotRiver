@@ -2,8 +2,10 @@ from dotenv import load_dotenv
 import os
 
 # Cargar variables del archivo .env
-if not load_dotenv("./config.env"):
-    print("Advertencia: No se pudo cargar el archivo config.env")
+#if not load_dotenv("./config.env"):
+#    print("Advertencia: No se pudo cargar el archivo config.env")
+
+load_dotenv("./config.env")
 
 # Variables de entorno
 bearer_token = os.getenv("bearer_token")

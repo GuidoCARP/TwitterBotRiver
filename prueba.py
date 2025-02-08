@@ -49,5 +49,5 @@ def tweetear_partido():
     #    client.create_tweet(text="Hoy no juega River, todo es tristeza y dolor")
 
 
-#tweetear_partido()
+tweetear_partido()
     
