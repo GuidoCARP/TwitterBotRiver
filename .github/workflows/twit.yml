@@ -34,6 +34,7 @@ jobs:
           echo "bearer_token=${{ secrets.BEARER_TOKEN }}" >> .env
           echo "access_token=${{ secrets.ACCESS_TOKEN }}" >> .env
           echo "access_token_secret=${{ secrets.ACCESS_TOKEN_SECRET }}" >> .env
+          cat .env
 
       # 5. Ejecutar el script
       - name: Ejecutar script
