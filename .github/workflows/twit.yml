@@ -1,0 +1,40 @@
+name: Ejecución twit diario
+on:
+  schedule:
+    # Ejecutar todos los días a las 13:00 UTC
+    - cron: "0 13 * * *"
+  workflow_dispatch:  # Permite ejecutar manualmente el workflow desde GitHub
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Chequear el repositorio
+      - name: Chequear el repositorio
+        uses: actions/checkout@v3
+
+      # 2. Configurar Python
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      # 3. Instalar dependencias
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 4. Crear el archivo .env con los Secrets
+      - name: Configurar archivo .env
+        run: |
+          echo "api_key=${{ secrets.API_KEY }}" > .env
+          echo "api_secret=${{ secrets.API_SECRET }}" >> .env
+          echo "bearer_token=${{ secrets.BEARER_TOKEN }}" >> .env
+          echo "access_token=${{ secrets.ACCESS_TOKEN }}" >> .env
+          echo "access_token_secret=${{ secrets.ACCESS_TOKEN_SECRET }}" >> .env
+
+      # 5. Ejecutar el script
+      - name: Ejecutar script
+        run: python prueba.py
