@@ -29,11 +29,11 @@ jobs:
       # 4. Crear el archivo .env con los Secrets
       - name: Configurar archivo .env
         run: |
-          echo "api_key=${{ secrets.API_KEY }}" > .env
-          echo "api_secret=${{ secrets.API_SECRET }}" >> .env
-          echo "bearer_token=${{ secrets.BEARER_TOKEN }}" >> .env
-          echo "access_token=${{ secrets.ACCESS_TOKEN }}" >> .env
-          echo "access_token_secret=${{ secrets.ACCESS_TOKEN_SECRET }}" >> .env
+          echo "api_key=${{ secrets.API_KEY }}" > config.env
+          echo "api_secret=${{ secrets.API_SECRET }}" >> config.env
+          echo "bearer_token=${{ secrets.BEARER_TOKEN }}" >> config.env
+          echo "access_token=${{ secrets.ACCESS_TOKEN }}" >> config.env
+          echo "access_token_secret=${{ secrets.ACCESS_TOKEN_SECRET }}" >> config.env
           cat .env
 
       # 5. Ejecutar el script
