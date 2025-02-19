@@ -1,7 +1,8 @@
-from datetime import datetime
+from datetime import datetime,date
 import tweepy
 from config import bearer_token, api_key, api_secret, access_token, access_token_secret
 import scrapperRiver
+import random
 
 
 #Autenticación con Twitter API
@@ -49,5 +50,28 @@ def tweetear_partido():
     #    client.create_tweet(text="Hoy no juega River, todo es tristeza y dolor")
 
 
-tweetear_partido()
-    
+def fecha_actual():
+        
+    # Obtener la fecha de hoy
+    fecha_hoy = date.today()
+
+    # Formatear la fecha como "%dd %mm %aaaa"
+    fecha_formateada = fecha_hoy.strftime(f"%d/%m/%Y")
+    return fecha_formateada
+
+def hora_actual():
+    # Obtener la hora actual
+    hora_actual = datetime.now().time()
+
+    # Formatear la hora como "%hh %mm"
+    hora_formateada = hora_actual.strftime(f"%H:%M")
+    return hora_formateada
+
+potenciales_twits=[f"siendo hoy {fecha_actual()} reafirmo que santiago simon es un hijo de puta",
+                   "recordemos todos juntos que santiago simon es un hijo de puta",
+                   f"{hora_actual()} hora de buenos aires y santiago simon sigue siendo un hijo de puta",
+                   f"{scrapperRiver.partidos_jugados}, para los que no esten familiarizados con ese numero, es la cantidad de partidos que jugo el hijo de puta de Santiago Simon",
+                   "santiago simon es un hijo de puta",
+                   f"{scrapperRiver.partidos_jugados}!!!!!!!!"]
+
+print(random.choice(potenciales_twits))
