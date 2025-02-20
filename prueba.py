@@ -45,7 +45,7 @@ def juega_hoy():
     
 def tweetear_partido():
     if juega_hoy():
-        client.create_tweet(text=f"{scrapperRiver.partidos_jugados} para los que no esten familiarizados con ese numero, es la cantidad de partidos que jugo el hijo de puta de Santiago Simon")
+        client.create_tweet(text=random.choice(potenciales_twits))
     #else:
     #    client.create_tweet(text="Hoy no juega River, todo es tristeza y dolor")
 
@@ -74,4 +74,11 @@ potenciales_twits=[f"siendo hoy {fecha_actual()} reafirmo que santiago simon es 
                    "santiago simon es un hijo de puta",
                    f"{scrapperRiver.partidos_jugados}!!!!!!!!"]
 
-print(random.choice(potenciales_twits))
+client.create_tweet(text=random.choice(potenciales_twits))
+
+
+#########
+##Ideas##
+#########
+
+#1. autocompletar la puteada con insultos aleatorios (hijo de puta, pelotudo, etc)
