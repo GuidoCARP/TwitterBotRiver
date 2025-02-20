@@ -27,4 +27,4 @@ df = pd.DataFrame(santi)
 # Print the last row and the fifth column
 partidos_jugados=df.iloc[-1, 5]
 
-#print(partidos_jugados)
+minutos_jugados=df.iloc[-1, 17]

@@ -28,26 +28,17 @@ def juega_hoy():
     hoy = datetime.now()
     print(hoy)
 
-    # Obtener el proximo partido de River
-
-    
-    #hs = scrapperRiver.hora[1].text
-    #contr = scrapperRiver.rival[0].text
-    #l_v = scrapperRiver.loc_o_vic[1].text
-
     # Comparar la fecha
     if fecha_obj.date() == hoy.date():
-        print("La fecha es hoy.")
         return True
     else:
-        print("River no juega.")
         return False
     
 def tweetear_partido():
     if juega_hoy():
-        client.create_tweet(text=random.choice(potenciales_twits))
-    #else:
-    #    client.create_tweet(text="Hoy no juega River, todo es tristeza y dolor")
+        client.create_tweet(text=random.choice(twits_dia_de_partido))
+    else:
+        client.create_tweet(text=random.choice(twits))
 
 
 def fecha_actual():
@@ -67,18 +58,29 @@ def hora_actual():
     hora_formateada = hora_actual.strftime(f"%H:%M")
     return hora_formateada
 
-potenciales_twits=[f"siendo hoy {fecha_actual()} reafirmo que santiago simon es un hijo de puta",
-                   "recordemos todos juntos que santiago simon es un hijo de puta",
-                   f"{hora_actual()} hora de buenos aires y santiago simon sigue siendo un hijo de puta",
-                   f"{scrapperRiver.partidos_jugados}, para los que no esten familiarizados con ese numero, es la cantidad de partidos que jugo el hijo de puta de Santiago Simon",
-                   "santiago simon es un hijo de puta",
-                   f"{scrapperRiver.partidos_jugados}!!!!!!!!"]
+insultos = ["hijo de puta", "pelotudo", "forro", "cagon", "cabeza de pija"]
 
-client.create_tweet(text=random.choice(potenciales_twits))
+twits=[f"siendo hoy {fecha_actual()} reafirmo que santiago simon es un {random.choice(insultos)}",
+                   f"recordemos todos juntos que santiago simon es un {random.choice(insultos)}",
+                   f"{hora_actual()} hora de buenos aires y santiago simon sigue siendo un {random.choice(insultos)}",
+                   f"{scrapperRiver.partidos_jugados}, para los que no esten familiarizados con ese numero, es la cantidad de partidos que jugo el {random.choice(insultos)} de Santiago Simon",
+                   f"santiago simon es un {random.choice(insultos)}",
+                   f"{scrapperRiver.partidos_jugados}!!!!!!!!",
+                   f"{scrapperRiver.minutos_jugados} minutos jugados, pero el tipo sigue siendo amateur",
+                   "malas noticias en el mundo river: santiago simon fue hayado con los ligamentos cruzados intactos"]
+
+twits_dia_de_partido=[f"{scrapperRiver.hora[1].text} hora en la que morire de cancer",
+                      f"espero dios me lleve antes de tener que ver a este {random.choice(insultos)}"]
+
+tweetear_partido()
+
 
 
 #########
 ##Ideas##
 #########
 
-#1. autocompletar la puteada con insultos aleatorios (hijo de puta, pelotudo, etc)
+# Obtener el proximo partido de River
+#hs = scrapperRiver.hora[1].text
+#contr = scrapperRiver.rival[0].text
+#l_v = scrapperRiver.loc_o_vic[1].text
