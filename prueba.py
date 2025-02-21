@@ -37,12 +37,13 @@ def juega_hoy():
 def tweetear_partido():
     if juega_hoy():
         client.create_tweet(text=random.choice(twits_dia_de_partido))
+        print("Tweeteado con exito")
     else:
         client.create_tweet(text=random.choice(twits))
+        print("Tweeteado con exito")
 
 
-def fecha_actual():
-        
+def fecha_actual():      
     # Obtener la fecha de hoy
     fecha_hoy = date.today()
 
@@ -59,6 +60,7 @@ def hora_actual():
     return hora_formateada
 
 insultos = ["hijo de puta", "pelotudo", "forro", "cagon", "cabeza de pija"]
+jugadores_a_comparar = ["Lothar Matthäus"]
 
 twits=[f"siendo hoy {fecha_actual()} reafirmo que santiago simon es un {random.choice(insultos)}",
                    f"recordemos todos juntos que santiago simon es un {random.choice(insultos)}",
@@ -66,11 +68,14 @@ twits=[f"siendo hoy {fecha_actual()} reafirmo que santiago simon es un {random.c
                    f"{scrapperRiver.partidos_jugados}, para los que no esten familiarizados con ese numero, es la cantidad de partidos que jugo el {random.choice(insultos)} de Santiago Simon",
                    f"santiago simon es un {random.choice(insultos)}",
                    f"{scrapperRiver.partidos_jugados}!!!!!!!!",
-                   f"{scrapperRiver.minutos_jugados} minutos jugados, pero el tipo sigue siendo amateur",
-                   "malas noticias en el mundo river: santiago simon fue hayado con los ligamentos cruzados intactos"]
+                   f"{scrapperRiver.minutos_jugados} minutos jugados, pero el tipo parece amateur",
+                   "malas noticias en el mundo river: santiago simon fue hayado con los ligamentos cruzados intactos",
+                   "sigue vivo, ni me caliento en decir nada mas",
+                   "a simon hay que darle la inyeccion letal como a los caballos enfermos asi no sufre mas"]
 
 twits_dia_de_partido=[f"{scrapperRiver.hora[1].text} hora en la que morire de cancer",
-                      f"espero dios me lleve antes de tener que ver a este {random.choice(insultos)}"]
+                      f"espero dios me lleve antes de tener que ver a este {random.choice(insultos)}",
+                      f"jugara hoy {random.choice(jugadores_a_comparar)}?"]
 
 tweetear_partido()
 

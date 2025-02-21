@@ -1,9 +1,8 @@
-name: Ejecución twit diario
+name: Ejecución twit partidos jugados
 on:
   schedule:
     # Ejecutar todos los días a las 13:00 UTC
-    - cron: "0 19 * * *"
-  workflow_dispatch:  # Permite ejecutar manualmente el workflow desde GitHub
+    - cron: "0 13 * * *"
 
 jobs:
   run-script:
@@ -38,4 +37,4 @@ jobs:
 
       # 5. Ejecutar el script
       - name: Ejecutar script
-        run: python prueba.py
+        run: python twit_numero.py
